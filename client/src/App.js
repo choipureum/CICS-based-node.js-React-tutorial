@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table';
@@ -21,6 +21,16 @@ const styles=theme =>({
 })
 
 function App(props) {
+  
+    this.callApi()
+    .then(res=>this.setState({customers:res}))
+    .catch(err=>console.log(err));
+ 
+  callApi= async() =>{
+    const response = await fetch('/api/customers');
+    const body = await response.json();
+    return body;
+  }
   const {classes} =props
   return (
     <Paper className={classes.root}>
@@ -34,9 +44,10 @@ function App(props) {
           <TableCell>직업</TableCell>
         </TableHead>
         <TableBody>
-      {customers.map(c =>{ return( <Customer
+      {this.state.customer ? this.state.customers.map(c =>{ 
+        return( <Customer
               //map을 사용할때는 key를 설정해줘야함(primarykey)
-              key={c.id} id={c.id} image={c.image} name={c.name} birthday={c.birthday} gender={c.gender} job={c.job}/>);})}  
+              key={c.id} id={c.id} image={c.image} name={c.name} birthday={c.birthday} gender={c.gender} job={c.job}/>);}):""}  
         </TableBody>
       </Table>
     </Paper>
