@@ -1,0 +1,11 @@
+-react 설치
+1. 경로 >>npm install -g create-react-app 설치
+2. 경로 >> create-react-app 폴더명
+3. 폴더명으로 설치완료
+
+-서버가동
+1. cmd창 열기
+2. react가 설치된 폴더 열기 cd ~경로명
+3. yarn start-> 서버 시작 / ctrl+c -> 서버 종료가능
+
+
